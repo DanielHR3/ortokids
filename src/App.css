@@ -1202,4 +1202,25 @@
   .hero-image {
     aspect-ratio: 4/3;
   }
+  
+  .card {
+    padding: 1.25rem !important;
+  }
+  
+  .appointment-form input,
+  .appointment-form select,
+  .appointment-form textarea {
+    font-size: 0.9rem;
+    padding-left: 2.25rem !important;
+  }
+  
+  .input-icon {
+    left: 0.85rem !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .card {
+    padding: 1.5rem;
+  }
 }
