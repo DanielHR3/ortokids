@@ -64,3 +64,23 @@ La calidad del software se construirá desde el inicio mediante las siguientes d
     * `fix: ...` (solución de bugs).
     * `style: ...` (cambios en CSS o apariencia).
     * `docs: ...` (documentación).
+
+---
+
+## 🔒 4. Seguridad de la Información (Software Security - Pressman)
+
+Dado que la aplicación procesa datos personales (nombres, teléfonos e información de salud de pacientes), la arquitectura implementa los siguientes controles de mitigación de riesgos:
+
+1. **Prevención de Inyección de Scripts (XSS):**
+   * El motor de renderizado de React escapa y sanitiza de forma automática todos los valores ingresados en los campos de texto del formulario antes de inyectarlos en el DOM.
+   * Se prohíbe el uso de propiedades como `dangerouslySetInnerHTML` con datos provistos por el usuario.
+2. **Encripción en Tránsito (MitM):**
+   * Despliegue sobre **Firebase Hosting**, forzando por defecto comunicación cifrada a través de protocolos seguros **HTTPS** con certificados SSL/TLS automáticos.
+3. **Seguridad en Base de Datos (Row Level Security - RLS):**
+   * Si el proyecto escala y se integra con Supabase o Firebase Database en el futuro:
+     * La tabla `appointments` o `citas` debe configurarse con RLS habilitado.
+     * La regla de seguridad del cliente anónimo (`anon`) debe restringirse únicamente a inserciones (`INSERT`), bloqueando accesos de lectura (`SELECT`) o modificación pública de registros de otros pacientes.
+4. **Protección contra Spam y Ataques de Fuerza Bruta:**
+   * Inclusión de validaciones de formato de teléfono y fechas en el cliente.
+   * Recomendación de añadir un Captcha invisible (ej: Cloudflare Turnstile o Google reCAPTCHA v3) en el formulario previo al pase a producción.
+
