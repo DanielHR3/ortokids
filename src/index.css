@@ -1,0 +1,183 @@
+/* ==========================================================================
+   OrtoKids - Hoja de Estilos Globales (Vanilla CSS)
+   ========================================================================== */
+
+/* --- Variables y Configuración del Sistema de Diseño --- */
+:root {
+  /* Paleta de Colores Oficial de OrtoKids */
+  --primary: hsl(336, 78%, 43%);        /* Rosa/Fucsia Brillante (representa "Kids") */
+  --primary-hover: hsl(336, 78%, 35%);
+  --primary-light: hsl(336, 78%, 96%);
+  
+  --secondary: #0d47a1;                  /* Azul Cobalto/Marino (representa "Orto") */
+  --secondary-hover: hsl(217, 85%, 25%);
+  --secondary-light: hsl(217, 85%, 95%);
+  
+  --accent: hsl(291, 64%, 42%);          /* Lila/Morado (Color del diente del logo) */
+  --accent-light: hsl(291, 64%, 95%);
+  
+  --cyan-logo: hsl(187, 90%, 40%);       /* Cian (Color de "Consultorio Dental") */
+  --cyan-logo-light: hsl(187, 90%, 95%);
+  
+  --orange-logo: hsl(36, 100%, 50%);     /* Naranja */
+  
+  --bg-light: hsl(210, 40%, 97.5%);
+  --bg-card: hsl(0, 0%, 100%);
+  --text-dark: hsl(222, 47%, 12%);
+  --text-muted: hsl(215, 16%, 47%);
+  --border-color: hsl(214, 32%, 91%);
+  --white: #ffffff;
+  --success: hsl(142, 71%, 45%);
+  --danger: hsl(350, 89%, 60%);
+  
+  /* Tipografía */
+  --font-heading: 'Outfit', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  
+  /* Sombras y Efectos */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 10px 25px -5px rgba(15, 23, 42, 0.08), 0 8px 10px -6px rgba(15, 23, 42, 0.08);
+  --shadow-lg: 0 20px 40px -10px rgba(15, 23, 42, 0.12), 0 10px 15px -8px rgba(15, 23, 42, 0.12);
+  --shadow-glow: 0 15px 30px rgba(194, 24, 91, 0.2);
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* --- Reseteo Base --- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--text-dark);
+  background-color: var(--white);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* --- Elementos de Estructura --- */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 1.5rem;
+  padding-left: 1.5rem;
+}
+
+section {
+  padding: 5rem 0;
+  position: relative;
+}
+
+.section-header {
+  max-width: 650px;
+  margin: 0 auto 3.5rem auto;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.bg-light {
+  background-color: var(--bg-light);
+}
+
+/* --- Tipografía --- */
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--secondary);
+}
+
+h1 {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+}
+
+h2 {
+  font-size: clamp(2rem, 4vw, 2.5rem);
+  margin-bottom: 1rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+p {
+  font-size: 1rem;
+  color: var(--text-muted);
+}
+
+.section-tagline {
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--primary);
+  background-color: var(--primary-light);
+  padding: 0.35rem 1rem;
+  border-radius: 50px;
+  margin-bottom: 1rem;
+}
+
+.section-description {
+  font-size: 1.125rem;
+  margin-top: 0.5rem;
+}
+
+/* --- Grid System --- */
+.grid {
+  display: grid;
+  gap: 2rem;
+}
+
+.grid-2 {
+  grid-template-columns: 1fr;
+}
+
+.grid-3 {
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 992px) {
+  .grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* --- Animación de Entrada Reveal --- */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes floating {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-12px); }
+}
